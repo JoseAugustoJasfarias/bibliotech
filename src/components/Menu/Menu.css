@@ -1,0 +1,64 @@
+.menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+
+.menu-btn:focus {
+  outline: none;
+}
+
+.menu-btn .icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20px;
+}
+
+.menu-btn .icon .bar {
+  height: 3px;
+  width: 25px;
+  background-color: #5BCBFA;
+}
+.navText i  {
+  color: white;
+}
+.navText i :hover  {
+  color: #5BCBFA;
+}
+.nav-link.navText {
+  color: #5ecfff;
+  border: 1px solid rgba(255, 255, 255, 0.855);
+  margin-left: 10px;
+  border-radius: 8px;
+  background-color:#00000071;
+  font-weight: 450;
+  
+}
+
+.navText :hover{
+  color: rgb(255, 255, 255) !important;
+}
+.nav-link i {
+  font-size: 20px;
+  margin-left:auto;
+  margin-right: auto;
+  
+  
+}
+
+
+.my-nav .nav-link {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+.bi-box-arrow-right:hover::before {
+  color: #5ecfff;
+}
