@@ -14,6 +14,7 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { Ajuda } from "./pages/Ajuda/Ajuda"
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -38,6 +39,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<Root />}>
               <Route path="/" element={<Home />} />
+              <Route path="/Ajuda" element={<Ajuda />} />
               <Route path="/livros" element={<Livros />} />
               <Route path="/livros/adicionar" element={<AdicionarLivro />} />
               <Route path="/livros/editar/:id" element={<EditarLivro />} />

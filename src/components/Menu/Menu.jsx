@@ -72,8 +72,11 @@ export function Menu() {
               <Nav.Link as={Link} to="/emprestimos" className="navText">
                 Emprestimos
               </Nav.Link>
+              <Nav.Link as={Link} to="/Ajuda">
+                Ajuda
+              </Nav.Link>
 
-              
+
 
               <Nav.Link
                 onClick={onLogout}
