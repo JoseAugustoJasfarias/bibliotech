@@ -4,10 +4,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "./config";
 
-// Função assíncrona = que o resultado não é obtido de imediato
+
+
+
+ // Função assíncrona = que o resultado não é obtido de imediato
 // Haverá "espera"
 export async function cadastrarEmailSenha(email, senha) {
   // Indicar para o firebase que queremos cadastrar
@@ -38,3 +42,5 @@ export async function logout() {
   // Deslogar o usuário atual do firebase
   await signOut(auth);
 }
+
+
