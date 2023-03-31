@@ -45,8 +45,11 @@ export function App() {
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
             </Route>
+
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+
+
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
