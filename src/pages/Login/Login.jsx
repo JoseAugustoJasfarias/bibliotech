@@ -99,6 +99,8 @@ export function Login() {
           <img src={facebookIcon} width="32" alt="Google icon" /> Entrar com o
           Facebook
         </Button>
+
+        
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email</Form.Label>
