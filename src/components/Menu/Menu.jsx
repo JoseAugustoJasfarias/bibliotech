@@ -6,7 +6,7 @@ import { logout } from '../../firebase/auth';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { loginGoogle, loginEmailSenha } from '../../firebase/auth';
+
 
 export function Menu() {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ export function Menu() {
               <Nav.Link as={Link} to="/emprestimos" className="navText">
                 Emprestimos
               </Nav.Link>
-              <Nav.Link as={Link} to="/Ajuda">
+              <Nav.Link as={Link} to="/Ajuda" className="navText">
                 Ajuda
               </Nav.Link>
 

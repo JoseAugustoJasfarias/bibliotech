@@ -1,10 +1,10 @@
 import {
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signOut,
-  updateProfile,
+  signOut
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -37,6 +37,18 @@ export async function loginEmailSenha(email, senha) {
 
   return resultado.user;
 }
+
+export async function loginFacebook (){
+
+    const provider = new FacebookAuthProvider();
+    const resultado = await signInWithPopup(auth, provider);
+  
+    return resultado.user;
+  }
+  
+
+
+
 
 export async function logout() {
   // Deslogar o usuário atual do firebase
