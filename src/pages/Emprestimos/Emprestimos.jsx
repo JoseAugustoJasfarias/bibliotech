@@ -13,6 +13,24 @@ export function Emprestimos() {
     });
   }, []);
 
+  function atualizaStatusEmprestimo(emprestimo) {
+    const atrasado =
+      emprestimo.dataEntrega && new Date() > emprestimo.dataEntrega;
+    const novoStatus = atrasado ? 'Atrasado' : 'Concluído';
+    emprestimo.status = novoStatus;
+
+    setEmprestimos(prevEmprestimos => {
+      const novosEmprestimos = prevEmprestimos.map(prevEmprestimo => {
+        if (prevEmprestimo.id === emprestimo.id) {
+          return emprestimo;
+        } else {
+          return prevEmprestimo;
+        }
+      });
+      return novosEmprestimos;
+    });
+  }
+
   return (
     <div className="emprestimos">
       <Container>
@@ -43,6 +61,22 @@ export function Emprestimos() {
                 const dataEmprestimo = emprestimo.dataEmprestimo
                   ?.toDate()
                   ?.toLocaleDateString('pt-br');
+                const dataEntrega =
+                  emprestimo.dataEntrega &&
+                  typeof emprestimo.dataEntrega === 'object' &&
+                  emprestimo.dataEntrega instanceof Date
+                    ? emprestimo.dataEntrega
+                    : null;
+
+                // Verifica se o empréstimo está atrasado
+                const atrasado =
+                  emprestimo.dataEntrega && new Date() > emprestimo.dataEntrega;
+
+                // Atualiza o status para "Atrasado" se o empréstimo estiver atrasado
+                if (atrasado && emprestimo.status !== 'Atrasado') {
+                  atualizaStatusEmprestimo(emprestimo, 'Atrasado');
+                  emprestimo.status = 'Atrasado';
+                }
 
                 return (
                   <tr key={emprestimo.id}>
@@ -55,6 +89,8 @@ export function Emprestimos() {
                         bg={
                           emprestimo.status === 'Pendente'
                             ? 'warning'
+                            : emprestimo.status === 'Atrasado'
+                            ? 'danger'
                             : 'success'
                         }
                       >
