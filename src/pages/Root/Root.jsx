@@ -2,10 +2,15 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
+
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
+
   const usuarioLogado = useContext(AuthContext);
 
   if (usuarioLogado === null) {
@@ -16,10 +21,10 @@ export function Root() {
 
   return (
     <>
-      <header>
+      <header className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <Menu />
       </header>
-      <main>
+      <main className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <Outlet />
       </main>
     </>

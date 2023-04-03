@@ -3,13 +3,25 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import logoIcon from './../../assets/icons/livros.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../firebase/auth';
-import React, { useEffect, useState,useContext,} from 'react';
+import React, { useEffect, useState, useContext, } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 
 export function Menu() {
+
+
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
+  const alternar = resultado.alternar;
+
+  let iconeBtn = "https://cdn-icons-png.flaticon.com/512/3073/3073665.png";
+  if (temaEscuro) {
+    iconeBtn = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
+  }
+
   const navigate = useNavigate();
   const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
   const usuarioLogado = useContext(AuthContext);
@@ -17,7 +29,7 @@ export function Menu() {
 
   useEffect(() => {
     setUserDisplayName(usuarioLogado.displayName)
-  },[]);
+  }, [usuarioLogado.displayName]);
 
   function onLogout() {
     logout().then(() => {
@@ -30,7 +42,11 @@ export function Menu() {
   const handleShow = () => setShow(true);
 
   return (
-    <Navbar bg="success" variant="light" expand="lg">
+    <Navbar
+      bg={temaEscuro ? "dark" : "success"}
+      variant={temaEscuro ? "dark" : "ligth"}
+      expand="sm"
+    >
       <Container fluid>
         <Navbar.Brand>
           {
@@ -39,6 +55,7 @@ export function Menu() {
             </Link>
           }
         </Navbar.Brand>
+
 
         <Button
           variant="dark"
@@ -51,6 +68,7 @@ export function Menu() {
             <span className="bar"></span>
           </span>
         </Button>
+
 
         <Offcanvas
           show={show}
@@ -81,7 +99,7 @@ export function Menu() {
               </Nav.Link>
               <Nav.Link as={Link} to="/usuario" className="navText">
                 {userDisplayName ? userDisplayName : usuarioLogado.email.split("@")[0]}
-                </Nav.Link>
+              </Nav.Link>
               <Nav.Link as={Link} to="/Ajuda" className="navText">
                 Ajuda
               </Nav.Link>
@@ -99,6 +117,10 @@ export function Menu() {
                   style={{ color: isMouseOverIcon ? '#5ecfff' : 'white' }} // Verifica se o mouse está sobre o ícone e altera a cor de acordo
                 ></i>
               </Nav.Link>
+              <Button variant="outline-light" onClick={alternar} className="navText ms-2">
+                <img src={iconeBtn} alt="tema claro ou escuro" width="16" />
+                
+              </Button>
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>

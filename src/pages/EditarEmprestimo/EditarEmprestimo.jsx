@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getEmprestimo, updateEmprestimo } from '../../firebase/emprestimos';
 import { getLivro, getLivros } from '../../firebase/livros';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function EditarEmprestimo() {
+
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
+
   const { id } = useParams();
 
   const [livros, setLivros] = useState([]);
@@ -45,8 +50,9 @@ export function EditarEmprestimo() {
   }, [id, reset]);
 
   return (
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
     <div className="editar-emprestimo">
-      <Container>
+      <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <h1>Editar empréstimo</h1>
         <hr />
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -132,6 +138,7 @@ export function EditarEmprestimo() {
           </Button>
         </Form>
       </Container>
+    </div>
     </div>
   );
 }

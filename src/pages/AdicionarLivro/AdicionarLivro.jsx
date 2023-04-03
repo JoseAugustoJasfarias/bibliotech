@@ -3,8 +3,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { addLivro, uploadCapaLivro } from "../../firebase/livros";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function AdicionarLivro() {
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
@@ -33,8 +38,9 @@ export function AdicionarLivro() {
     }
 
     return (
+        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <div className="adicionar-livro">
-            <Container>
+            <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
                 <h1>Adicionar livro</h1>
                 <hr />
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -73,6 +79,7 @@ export function AdicionarLivro() {
                     <Button type="submit" variant="success">Adicionar</Button>
                 </Form>
             </Container>
+        </div>
         </div>
     )
 }

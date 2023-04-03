@@ -1,13 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { adicionarEmprestimo } from '../../firebase/emprestimos';
 import { getLivro, getLivros } from '../../firebase/livros';
-import { format, isAfter } from 'date-fns';
+import { isAfter } from 'date-fns';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function AdicionarEmprestimo() {
+
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
+
   const [livros, setLivros] = useState([]);
 
   const {
@@ -49,8 +54,9 @@ export function AdicionarEmprestimo() {
   }, []);
 
   return (
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
     <div className="adicionar-emprestimo">
-      <Container>
+      <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <h1>Adicionar empréstimo</h1>
         <hr />
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -148,6 +154,7 @@ export function AdicionarEmprestimo() {
           </Button>
         </Form>
       </Container>
+    </div>
     </div>
   );
 }
