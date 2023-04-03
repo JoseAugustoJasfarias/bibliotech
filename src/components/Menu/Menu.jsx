@@ -26,7 +26,7 @@ export function Menu() {
   const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
   const usuarioLogado = useContext(AuthContext);
   const [userDisplayName, setUserDisplayName] = useState();
- 
+
 
   useEffect(() => {
     setUserDisplayName(usuarioLogado.displayName)
@@ -107,8 +107,6 @@ export function Menu() {
                 Ajuda
               </Nav.Link>
 
-
-
               <Nav.Link
                 onClick={onLogout}
                 className="navText"
@@ -120,10 +118,11 @@ export function Menu() {
                   style={{ color: isMouseOverIcon ? '#5ecfff' : 'white' }} // Verifica se o mouse está sobre o ícone e altera a cor de acordo
                 ></i>
               </Nav.Link>
-              <Button variant="outline-light" onClick={alternar} className="navText ms-2">
-                <img src={iconeBtn} alt="tema claro ou escuro" width="16" />
 
-              </Button>
+              <Nav.Link  as={Link} variant="outline-light" onClick={alternar} className="navText iconHover ms-2"  >
+                <img src={iconeBtn} alt="tema claro ou escuro" width="16" className='navText' />
+
+              </Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>
