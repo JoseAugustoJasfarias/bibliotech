@@ -1,0 +1,12 @@
+.card{
+    align-items: center;
+    justify-content: center;
+    height: 750px !important;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+
+.score-section{
+    color:white;
+}
