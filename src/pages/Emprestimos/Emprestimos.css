@@ -1,0 +1,26 @@
+
+.botao {
+  width: 130px;
+  height: 31px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-weight: 450;
+}
+
+#dropdown-button-drop-end {
+  background-color: #000000a4 !important;
+  color: #5ecfff;
+  border: 1px solid rgba(255, 255, 255, 0.855);
+  border-radius: 8px;
+  width: 130px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 450;
+
+}
+
+
+
