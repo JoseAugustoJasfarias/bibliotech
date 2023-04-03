@@ -18,6 +18,7 @@ import { Ajuda } from './pages/Ajuda/Ajuda';
 import { ThemeContext } from './contexts/ThemeContext';
 import { Container, Spinner } from 'react-bootstrap';
 import imgLivro from './assets/icons/livros.png';
+import Quizz from './pages/Quizz/Quizz';
 
 export function App() {
   const [temaEscuro, setTemaEscuro] = useState(false);
@@ -80,6 +81,7 @@ export function App() {
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/quizz" element={<Quizz />} />
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>

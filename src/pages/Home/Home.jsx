@@ -1,6 +1,7 @@
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useState, useEffect, useContext } from "react";
 import { getEmprestimos } from '../../firebase/emprestimos';
+import "./Home.css"
 
 export function Home() {
 
@@ -27,10 +28,11 @@ function TotalEmprestimos() {
 }
 
   return (
-    
-    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
-      <h1>HOME</h1>
-      <TotalEmprestimos />
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" } >
+      <div className="home">
+        <h1>HOME</h1>
+        <TotalEmprestimos />
+      </div>
     </div>
 
   );
