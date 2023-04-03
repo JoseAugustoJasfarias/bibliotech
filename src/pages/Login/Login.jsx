@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -7,7 +7,7 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import facebookIcon from "../../assets/icons/facebook.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha ,loginFacebook } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook } from "../../firebase/auth";
 import { Footer } from "../../components/Footer/Footer";
 
 export function Login() {
@@ -18,6 +18,8 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
+
+  const [showPassword, setshowPassword] = useState(false);
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -36,9 +38,9 @@ export function Login() {
         });
       });
   }
-  
-  function onLoginFacebook () {
-      loginFacebook()
+
+  function onLoginFacebook() {
+    loginFacebook()
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
@@ -95,12 +97,12 @@ export function Login() {
           Google
         </Button>
 
-        <Button className="mb-3 ms-2"  onClick={onLoginFacebook}>
+        <Button className="mb-3 ms-2" onClick={onLoginFacebook}>
           <img src={facebookIcon} width="32" alt="Google icon" /> Entrar com o
           Facebook
         </Button>
 
-        
+
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email</Form.Label>
@@ -131,7 +133,7 @@ export function Login() {
           </Button>
         </Form>
       </Container>
-    <Footer />
+      <Footer />
     </>
 
   );
