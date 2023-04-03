@@ -3,13 +3,14 @@ import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginFacebook, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginFacebook, loginGoogle ,loginGithub } from "../../firebase/auth";
 import facebookIcon from "../../assets/icons/facebook.svg";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { Footer } from "../../components/Footer/Footer";
+import gitHubIcon from "../../assets/icons/github.svg";
 
 export function Cadastro() {
   const {
@@ -56,6 +57,24 @@ export function Cadastro() {
 }
 
 
+function onLoginGithub () {
+  loginGithub()
+    .then((user) => {
+      toast.success(`Bem-vindo(a) ${user.email}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+      navigate("/");
+    })
+    .catch((erro) => {
+      toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        position: "bottom-right",
+        duration: 2500,
+      });
+    });
+
+}
+
 
   function onLoginGoogle() {
     // then = quando der certo o processo
@@ -94,15 +113,22 @@ export function Cadastro() {
           Já tem conta? <Link to="/login">Entre</Link>
         </p>
         <hr />
-        <Button className="mb-3 ms-2" variant="danger" onClick={onLoginGoogle}>
-          <img src={googleIcon} width="32" alt="Logo do google" />
-          Entrar com o Google
+
+        <Button className="mb-3 ms-2 btnLogin" variant="danger" onClick={onLoginGoogle}>
+          <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
+          Google
         </Button>
 
-        <Button className="mb-3 ms-2"  onClick={onLoginFacebook}>
+        <Button className="mb-3 ms-2 btnLogin" onClick={onLoginFacebook}>
           <img src={facebookIcon} width="32" alt="Google icon" /> Entrar com o
           Facebook
         </Button>
+
+        <Button className="mb-3 ms-2 githubIcon btnLogin"  id="gitIcon"  onClick={onLoginGithub}>
+          <img src={gitHubIcon} width="36" alt="GitHub icon" /> Entrar com o
+          Git Hub
+        </Button>
+
 
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mb-3" controlId="email">

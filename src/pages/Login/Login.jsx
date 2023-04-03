@@ -7,8 +7,10 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import facebookIcon from "../../assets/icons/facebook.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha, loginFacebook } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginFacebook ,loginGithub } from "../../firebase/auth";
 import { Footer } from "../../components/Footer/Footer";
+import gitHubIcon from "../../assets/icons/github.svg";
+import "./Login.css"
 
 export function Login() {
   const {
@@ -57,6 +59,24 @@ export function Login() {
   }
 
 
+  function onLoginGithub () {
+    loginGithub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+
+  }
+
   function onLoginGoogle() {
     loginGoogle()
       .then((user) => {
@@ -92,14 +112,19 @@ export function Login() {
           Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
         </p>
         <hr />
-        <Button className="mb-3 ms-2" variant="danger" onClick={onLoginGoogle}>
+        <Button className="mb-3 ms-2 btnLogin" variant="danger" onClick={onLoginGoogle}>
           <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
           Google
         </Button>
 
-        <Button className="mb-3 ms-2" onClick={onLoginFacebook}>
+        <Button className="mb-3 ms-2 btnLogin" onClick={onLoginFacebook}>
           <img src={facebookIcon} width="32" alt="Google icon" /> Entrar com o
           Facebook
+        </Button>
+
+        <Button className="mb-3 ms-2 githubIcon btnLogin"  id="gitIcon"  onClick={onLoginGithub}>
+          <img src={gitHubIcon} width="36" alt="GitHub icon" /> Entrar com o
+          Git Hub
         </Button>
 
 
