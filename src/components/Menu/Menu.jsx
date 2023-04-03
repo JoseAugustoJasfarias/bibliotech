@@ -3,7 +3,8 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import logoIcon from './../../assets/icons/livros.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../firebase/auth';
-import React, { useState } from 'react';
+import React, { useEffect, useState,useContext,} from 'react';
+import { AuthContext } from "../../contexts/AuthContext";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
@@ -11,6 +12,12 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 export function Menu() {
   const navigate = useNavigate();
   const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
+  const usuarioLogado = useContext(AuthContext);
+  const [userDisplayName, setUserDisplayName] = useState();
+
+  useEffect(() => {
+    setUserDisplayName(usuarioLogado.displayName)
+  },[]);
 
   function onLogout() {
     logout().then(() => {
@@ -72,6 +79,9 @@ export function Menu() {
               <Nav.Link as={Link} to="/emprestimos" className="navText">
                 Emprestimos
               </Nav.Link>
+              <Nav.Link as={Link} to="/usuario" className="navText">
+                {userDisplayName ? userDisplayName : usuarioLogado.email.split("@")[0]}
+                </Nav.Link>
               <Nav.Link as={Link} to="/Ajuda" className="navText">
                 Ajuda
               </Nav.Link>
