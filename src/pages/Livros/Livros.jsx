@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export function Livros() {
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
 
     const [livros, setLivros] = useState(null);
 
@@ -31,8 +35,9 @@ export function Livros() {
     }
 
     return (
+        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <div className="livros">
-            <Container>
+            <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Livros</h1>
                     <Button as={Link} to="/livros/adicionar" variant="success">
@@ -43,7 +48,7 @@ export function Livros() {
                 {livros === null ?
                     <Loader />
                     : 
-                    <Table striped bordered hover>
+                    <Table className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
                         <thead>
                             <tr>
                                 <th>Título</th>
@@ -86,6 +91,7 @@ export function Livros() {
                     </Table>
                 }
             </Container>
+        </div>
         </div>
     )
 }

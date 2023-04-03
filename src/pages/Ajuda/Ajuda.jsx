@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import "./Ajuda.css"
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function Ajuda() {
+
+    const resultado = useContext(ThemeContext);
+    const temaEscuro = resultado.temaEscuro;
+
     return (
-        <div >
+        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
             <div>
                 <h1>Duvidas mais frequentes</h1>
                 <Accordion className='Accordion' defaultActiveKey={['0']} alwaysOpen>

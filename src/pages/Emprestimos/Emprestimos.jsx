@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Badge, Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { getEmprestimos } from '../../firebase/emprestimos';
 import { Loader } from '../../components/Loader/Loader';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function Emprestimos() {
+
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
+
   const [emprestimos, setEmprestimos] = useState(null);
 
   useEffect(() => {
@@ -32,8 +37,9 @@ export function Emprestimos() {
   }
 
   return (
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
     <div className="emprestimos">
-      <Container>
+      <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <div className="d-flex justify-content-between align-items-center">
           <h1>Emprestimos</h1>
           <Button as={Link} to="/emprestimos/adicionar" variant="success">
@@ -44,7 +50,7 @@ export function Emprestimos() {
         {emprestimos === null ? (
           <Loader />
         ) : (
-          <Table striped bordered hover>
+          <Table className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
             <thead>
               <tr>
                 <th>Leitor</th>
@@ -115,6 +121,7 @@ export function Emprestimos() {
           </Table>
         )}
       </Container>
+    </div>
     </div>
   );
 }
