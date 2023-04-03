@@ -26,6 +26,7 @@ export function Menu() {
   const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
   const usuarioLogado = useContext(AuthContext);
   const [userDisplayName, setUserDisplayName] = useState();
+ 
 
   useEffect(() => {
     setUserDisplayName(usuarioLogado.displayName)
@@ -36,6 +37,8 @@ export function Menu() {
       navigate('/login');
     });
   }
+
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -119,7 +122,7 @@ export function Menu() {
               </Nav.Link>
               <Button variant="outline-light" onClick={alternar} className="navText ms-2">
                 <img src={iconeBtn} alt="tema claro ou escuro" width="16" />
-                
+
               </Button>
             </Nav>
           </Offcanvas.Body>
