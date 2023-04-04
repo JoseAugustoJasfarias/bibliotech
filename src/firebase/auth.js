@@ -10,13 +10,17 @@ import {
 import { auth } from "./config";
 
 
+export async function resetPassword(email) {
+  return auth.sendPasswordResetEmail(auth, email);
+}
 
 
- // Função assíncrona = que o resultado não é obtido de imediato
+// Função assíncrona = que o resultado não é obtido de imediato
 // Haverá "espera"
 export async function cadastrarEmailSenha(email, senha) {
   // Indicar para o firebase que queremos cadastrar
   // um novo usuário utilizando email/senha
+  
 
   // Aguardando o resultado do Firebase
   const resultado = await createUserWithEmailAndPassword(auth, email, senha);
@@ -51,8 +55,6 @@ export async function loginFacebook (){
   }
 
 
-  
-
 export async function loginGithub (){
 
   const provider = new GithubAuthProvider();
@@ -60,7 +62,8 @@ export async function loginGithub (){
 
   return resultado.user;
 }
-  
+
+
 
 
 

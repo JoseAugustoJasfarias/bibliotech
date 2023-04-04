@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, Route, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import facebookIcon from "../../assets/icons/facebook.svg";
 import loginImg from "../../assets/images/login.png";
@@ -168,6 +168,9 @@ export function Login() {
             Entrar
           </Button>
         </Form>
+        <p className="text-muted">
+          <Link to="/esqueci-minha-senha">Esqueci minha Senha</Link>
+        </p>
       </Container>
       <Footer />
     </>
