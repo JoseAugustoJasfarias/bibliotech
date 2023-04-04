@@ -23,37 +23,128 @@ export function Login() {
 
   const [showPassword, setshowPassword] = useState(false);
 
+
+
   function onSubmit(data) {
     const { email, senha } = data;
-    loginEmailSenha(email, senha)
-      .then((user) => {
+  
+    return new Promise(async (resolve, reject) => {
+      try {
+        const user = await loginEmailSenha(email, senha);
         toast.success(`Entrando como ${user ? user.email : ""}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
         navigate("/");
-      })
-      .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        resolve(user);
+      } catch (erro) {
+        let errorMessage;
+        switch (erro.code) {
+          case "auth/invalid-email":
+            errorMessage = "O endereço de e-mail informado é inválido";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "A senha informada está incorreta";
+            break;
+          case "auth/user-not-found":
+            errorMessage = "Não há registro de usuário correspondente a este e-mail";
+            break;
+          case "auth/user-disabled":
+            errorMessage = "Este usuário foi desativado";
+            break;
+          case "auth/email-already-in-use":
+            errorMessage = "O endereço de e-mail informado já está em uso por outra conta";
+            break;
+          case "auth/weak-password":
+            errorMessage = "A senha deve ter pelo menos 6 caracteres";
+            break;
+          default:
+            errorMessage = "Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.";
+            break;
+        }
+        toast.error(errorMessage, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
-      });
+        reject(erro);
+      }
+    });
   }
+  
+  
 
   function onLoginFacebook() {
     loginFacebook()
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
         navigate("/");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        let errorMessage;
+        switch (erro.code) {
+          case "auth/account-exists-with-different-credential":
+            errorMessage =
+              "Esta conta já está associada a um e-mail diferente. Faça login com esse e-mail ou tente redefinir a senha.";
+            break;
+          case "auth/auth-domain-config-required":
+            errorMessage =
+              "O domínio de autenticação não foi configurado para o projeto atual.";
+            break;
+          case "auth/credential-already-in-use":
+            errorMessage =
+              "As credenciais já estão em uso por outra conta. Tente fazer login com outro método de autenticação.";
+            break;
+          case "auth/email-already-in-use":
+            errorMessage =
+              "O endereço de e-mail informado já está em uso por outra conta.";
+            break;
+          case "auth/invalid-credential":
+            errorMessage =
+              "As credenciais fornecidas para a autenticação são inválidas ou expiraram. Tente novamente.";
+            break;
+          case "auth/operation-not-allowed":
+            errorMessage =
+              "A operação de login com o método fornecido foi desabilitada para o projeto atual.";
+            break;
+          case "auth/operation-not-supported-in-this-environment":
+            errorMessage =
+              "Esta operação de autenticação não é suportada no ambiente atual.";
+            break;
+          case "auth/popup-blocked":
+            errorMessage =
+              "O pop-up de autenticação foi bloqueado pelo navegador. Por favor, permita pop-ups para este site e tente novamente.";
+            break;
+          case "auth/popup-closed-by-user":
+            errorMessage =
+              "O pop-up de autenticação foi fechado pelo usuário antes de completar a operação de login.";
+            break;
+          case "auth/unauthorized-domain":
+            errorMessage =
+              "O domínio atual não está autorizado para realizar operações de autenticação.";
+            break;
+          case "auth/user-cancelled":
+            errorMessage =
+              "A operação de login foi cancelada pelo usuário.";
+            break;
+          case "auth/user-not-found":
+            errorMessage =
+              "Não há registro de usuário correspondente ao e-mail informado.";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "A senha informada está incorreta.";
+            break;
+          default:
+            errorMessage =
+              "Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.";
+            break;
+        }
+  
+        toast.error(errorMessage, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
       });
   }
@@ -64,35 +155,85 @@ export function Login() {
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
         navigate("/");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        let errorMessage;
+        switch (erro.code) {
+          case "auth/invalid-email":
+            errorMessage = "O endereço de e-mail informado é inválido";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "A senha informada está incorreta";
+            break;
+          case "auth/user-not-found":
+            errorMessage = "Não há registro de usuário correspondente a este e-mail";
+            break;
+          case "auth/user-disabled":
+            errorMessage = "Este usuário foi desativado";
+            break;
+          case "auth/email-already-in-use":
+            errorMessage = "O endereço de e-mail informado já está em uso por outra conta";
+            break;
+          case "auth/weak-password":
+            errorMessage = "A senha deve ter pelo menos 6 caracteres";
+            break;
+          default:
+            errorMessage = "Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.";
+            break;
+        }
+        toast.error(errorMessage, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
       });
-
   }
+  
 
   function onLoginGoogle() {
     loginGoogle()
       .then((user) => {
         toast.success(`Bem-vindo(a) ${user.email}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
         navigate("/");
       })
       .catch((erro) => {
-        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+        let errorMessage;
+        switch (erro.code) {
+            case "auth/invalid-email":
+                errorMessage = "O endereço de e-mail informado é inválido";
+                break;
+            case "auth/wrong-password":
+                errorMessage = "A senha informada está incorreta";
+                break;
+            case "auth/user-not-found":
+                errorMessage = "Não há registro de usuário correspondente a este e-mail";
+                break;
+            case "auth/user-disabled":
+                errorMessage = "Este usuário foi desativado";
+                break;
+            case "auth/email-already-in-use":
+                errorMessage = "O endereço de e-mail informado já está em uso por outra conta";
+                break;
+            case "auth/weak-password":
+                errorMessage = "A senha deve ter pelo menos 6 caracteres";
+                break;
+            default:
+                errorMessage = "Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.";
+                break;
+        }
+
+        toast.error(`Um erro aconteceu. ${errorMessage}`, {
           position: "bottom-right",
-          duration: 2500,
+          duration: 4000,
         });
       });
   }
+
 
   const usuarioLogado = useContext(AuthContext);
 
