@@ -20,6 +20,7 @@ import { Container, Spinner } from 'react-bootstrap';
 import imgLivro from './assets/icons/livros.png';
 import Quizz from './pages/Quizz/Quizz';
 import { NotFound } from './pages/NotFound/NotFound';
+import { ResetPassword } from './components/EsqueciMinhaSenha/EsqueciMinhaSenha';
 
 export function App() {
   const [temaEscuro, setTemaEscuro] = useState(false);
@@ -82,6 +83,7 @@ export function App() {
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/esqueci-minha-senha" element={<ResetPassword />} />
               <Route path="/quizz" element={<Quizz />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

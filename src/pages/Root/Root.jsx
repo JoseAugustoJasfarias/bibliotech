@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, Route } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -18,13 +18,13 @@ export function Root() {
     // redireciona para a página de login
     return <Navigate to="/login" />;
   }
-
+  
   return (
     <>
-      <header className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+      <header className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
         <Menu />
       </header>
-      <main className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+      <main className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
         <Outlet />
       </main>
     </>
