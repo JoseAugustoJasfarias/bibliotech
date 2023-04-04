@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getEmprestimo, updateEmprestimo } from '../../firebase/emprestimos';
 import { getLivro, getLivros } from '../../firebase/livros';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 
 export function EditarEmprestimo() {
 
@@ -52,6 +53,7 @@ export function EditarEmprestimo() {
   return (
     <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
     <div className="editar-emprestimo">
+      <Breadcrumb />
       <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <h1>Editar empréstimo</h1>
         <hr />

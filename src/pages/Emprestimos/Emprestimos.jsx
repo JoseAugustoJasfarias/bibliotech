@@ -13,6 +13,7 @@ import { getEmprestimos } from '../../firebase/emprestimos';
 import { Loader } from '../../components/Loader/Loader';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import './Emprestimos.css';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 
 export function Emprestimos() {
   const resultado = useContext(ThemeContext);
@@ -51,6 +52,7 @@ export function Emprestimos() {
   return (
     <div className={temaEscuro ? 'bg-dark text-light' : 'bg-light text-dark'}>
       <div className="emprestimos">
+        <Breadcrumb />
         <Container
           className={temaEscuro ? 'bg-dark text-light' : 'bg-light text-dark'}
         >
@@ -91,6 +93,7 @@ export function Emprestimos() {
                     emprestimo.dataEntrega instanceof Date
                       ? emprestimo.dataEntrega
                       : null;
+                      console.log(dataEntrega)
 
                   // Verifica se o empréstimo está atrasado
                   const atrasado =

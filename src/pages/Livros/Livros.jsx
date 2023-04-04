@@ -6,6 +6,7 @@ import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { Breadcrumb } from "../../components/Breadcrumb/Breadcrumb";
 
 export function Livros() {
 
@@ -37,6 +38,7 @@ export function Livros() {
     return (
         <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
         <div className="livros">
+            <Breadcrumb />
             <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Livros</h1>
