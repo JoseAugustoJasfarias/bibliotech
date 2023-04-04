@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link, Navigate, Route, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import facebookIcon from "../../assets/icons/facebook.svg";
 import loginImg from "../../assets/images/login.png";
@@ -20,9 +20,6 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
-
-  const [showPassword, setshowPassword] = useState(false);
-
 
 
   function onSubmit(data) {

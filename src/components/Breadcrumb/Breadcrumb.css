@@ -1,0 +1,29 @@
+.Breadcrumb {
+    padding: 10px;
+    font-size: 14px;
+    font-family: var(--bs-body-font-family);
+}
+
+.Breadcrumb ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.Breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.Breadcrumb li:not(:last-child) {
+    margin-right: 10px;
+}
+
+.Breadcrumb a {
+    text-decoration: none;
+}
+
+.Breadcrumb a:hover {
+    text-decoration: underline;
+}

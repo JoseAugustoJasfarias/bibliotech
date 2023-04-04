@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navigate, Outlet, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
 import { ThemeContext } from "../../contexts/ThemeContext";

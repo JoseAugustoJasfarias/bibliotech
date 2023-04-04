@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import "./Ajuda.css"
 import { ThemeContext } from '../../contexts/ThemeContext';
+import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 
 export function Ajuda() {
 
@@ -11,6 +12,7 @@ export function Ajuda() {
 
     return (
         <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+            <Breadcrumb />
             <div>
                 <h1>Duvidas mais frequentes</h1>
                 <Accordion className='Accordion' defaultActiveKey={['0']} alwaysOpen>
