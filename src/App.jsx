@@ -19,6 +19,7 @@ import { ThemeContext } from './contexts/ThemeContext';
 import { Container, Spinner } from 'react-bootstrap';
 import imgLivro from './assets/icons/livros.png';
 import Quizz from './pages/Quizz/Quizz';
+import { NotFound } from './pages/NotFound/NotFound';
 
 export function App() {
   const [temaEscuro, setTemaEscuro] = useState(false);
@@ -82,6 +83,7 @@ export function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/quizz" element={<Quizz />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>

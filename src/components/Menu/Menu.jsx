@@ -47,7 +47,7 @@ export function Menu() {
   return (
     <Navbar
       bg={temaEscuro ? "dark" : "success"}
-      variant={temaEscuro ? "dark" : "ligth"}
+      variant={temaEscuro ? "dark, 0.5" : "ligth"}
       expand="sm"
     >
       <Container fluid>
