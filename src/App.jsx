@@ -16,6 +16,7 @@ import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Ajuda } from "./pages/Ajuda/Ajuda"
 import { ThemeContext } from "./contexts/ThemeContext";
+import { Postagem } from "./pages/Postagem/Postagem"
 
 export function App() {
 
@@ -60,6 +61,7 @@ export function App() {
             <Routes>
               <Route path="/" element={<Root />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/Postagem" element={<Postagem />} />
                 <Route path="/Ajuda" element={<Ajuda />} />
                 <Route path="/livros" element={<Livros />} />
                 <Route path="/livros/adicionar" element={<AdicionarLivro />} />
