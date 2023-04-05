@@ -1,13 +1,14 @@
 import './Menu.css';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, } from 'react-bootstrap';
 import logoIcon from './../../assets/icons/livros.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import { logout } from '../../firebase/auth';
 import React, { useEffect, useState, useContext, } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { ThemeContext } from '../../contexts/ThemeContext';
+
 
 
 export function Menu() {
@@ -111,6 +112,10 @@ export function Menu() {
                 Ajuda
               </Nav.Link>
 
+              <Nav.Link as={Link} to="/Postagem" className="navText">
+                Postagem
+              </Nav.Link>
+              
               <Nav.Link
                 onClick={onLogout}
                 className="navText"
@@ -123,10 +128,12 @@ export function Menu() {
                 ></i>
               </Nav.Link>
 
+
               <Nav.Link  as={Link} variant="outline-light" onClick={alternar} className="navText iconHover ms-2"  >
                 <img src={iconeBtn} alt="tema claro ou escuro" width="16" className='navText' />
 
               </Nav.Link>
+
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>
