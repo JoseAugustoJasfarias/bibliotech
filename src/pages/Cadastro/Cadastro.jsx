@@ -1,4 +1,4 @@
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { Link, Navigate } from 'react-router-dom';
 import logoIcon from '../../assets/icons/livros.png';
 import googleIcon from '../../assets/icons/google-white.svg';
@@ -13,9 +13,10 @@ import facebookIcon from '../../assets/icons/facebook.svg';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Footer } from '../../components/Footer/Footer';
 import gitHubIcon from '../../assets/icons/github.svg';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export function Cadastro() {
   const {
@@ -25,6 +26,11 @@ export function Cadastro() {
   } = useForm();
 
   const navigate = useNavigate();
+  function togglePasswordVisibility() {
+    setshowPassword(!showPassword);
+  }
+
+  const [showPassword, setshowPassword] = useState(false);
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -150,7 +156,6 @@ export function Cadastro() {
       });
   }
 
-  
   function onLoginGithub() {
     loginGithub()
       .then(user => {
@@ -194,7 +199,6 @@ export function Cadastro() {
         });
       });
   }
-
 
   function onLoginGoogle() {
     loginGoogle()
@@ -270,7 +274,7 @@ export function Cadastro() {
         </Button>
 
         <Button className="mb-3 ms-2 btnLogin" onClick={onLoginFacebook}>
-          <img src={facebookIcon} width="32" alt="Google icon" /> Entrar com o
+          <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
           Facebook
         </Button>
 
@@ -314,16 +318,26 @@ export function Cadastro() {
           </Form.Group>
           <Form.Group className="mb-3" controlId="password">
             <Form.Label>Senha</Form.Label>
-            <Form.Control
-              type="password"
-              className={errors.senha && 'is-invalid'}
-              placeholder="Sua senha"
-              {...register('senha', { required: 'A senha é obrigatória' })}
-            />
+            <InputGroup>
+              <Form.Control
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Sua senha"
+                className={errors.senha ? 'is-invalid' : ''}
+                {...register('senha', { required: 'A Senha é obrigatória' })}
+              />
+              <Button
+                variant="light"
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </Button>
+            </InputGroup>
             <Form.Text className="invalid-feedback">
               {errors.senha?.message}
             </Form.Text>
           </Form.Group>
+
           <Button type="submit" variant="success">
             Cadastrar
           </Button>
