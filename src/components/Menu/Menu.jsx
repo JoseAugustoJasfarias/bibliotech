@@ -15,17 +15,24 @@ export function Menu() {
 
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
-  const alternar = resultado.alternar;
+  const alternar = resultado.alternar;  
+
+  const navigate = useNavigate();
+  const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
+  const usuarioLogado = useContext(AuthContext);
+  const [userDisplayName, setUserDisplayName] = useState();
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   let iconeBtn = "https://cdn-icons-png.flaticon.com/512/3073/3073665.png";
   if (temaEscuro) {
     iconeBtn = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
   }
 
-  const navigate = useNavigate();
-  const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
-  const usuarioLogado = useContext(AuthContext);
-  const [userDisplayName, setUserDisplayName] = useState();
+ 
 
 
   useEffect(() => {
@@ -38,11 +45,6 @@ export function Menu() {
     });
   }
 
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <Navbar
@@ -100,9 +102,11 @@ export function Menu() {
               <Nav.Link as={Link} to="/emprestimos" className="navText">
                 Emprestimos
               </Nav.Link>
+
               <Nav.Link as={Link} to="/usuario" className="navText">
                 {userDisplayName ? userDisplayName : usuarioLogado.email.split("@")[0]}
               </Nav.Link>
+              
               <Nav.Link as={Link} to="/Ajuda" className="navText">
                 Ajuda
               </Nav.Link>
