@@ -3,3 +3,17 @@
     justify-content: center;
     height: 540px !important;
 }
+
+#backg {
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 88px);
+    background-image: url("../../assets/video/BIBLIOTECH.gif");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: #e48d7a;
+    border-top: 2px solid white;
+}

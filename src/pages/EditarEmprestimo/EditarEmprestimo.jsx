@@ -7,6 +7,7 @@ import { getEmprestimo, updateEmprestimo } from '../../firebase/emprestimos';
 import { getLivro, getLivros } from '../../firebase/livros';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+import "./EditarEmprestimo.css"
 
 export function EditarEmprestimo() {
 
@@ -51,7 +52,7 @@ export function EditarEmprestimo() {
   }, [id, reset]);
 
   return (
-    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" } id="editarEmprestimo">
     <div className="editar-emprestimo">
       <Breadcrumb />
       <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>

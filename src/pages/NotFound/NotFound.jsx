@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import loginImg from "../../assets/images/login.png";
+import notFound from "../../assets/images/BIBLIOTECH-login.png";
 import "./NotFound.css"
 import { Button, Modal } from "react-bootstrap";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -18,10 +18,10 @@ export function NotFound() {
 
     return (
         <div className="pagenotFound">
-            <img src={loginImg} alt="login" className="notFound" />
-            <p> <b>error 404.</b> Pagina não encontrada</p>
-            <span>Não encontramos a pagina: /{elementAfterSlash}</span><br />
-            <ButtonGroup className="mt-3">
+            <img src={notFound} alt="login" className="notFound" />
+            <p className="mt-2"> <b>error 404.</b> Pagina não encontrada</p>
+            <p>Não encontramos a pagina: /{elementAfterSlash}</p><br />
+            <ButtonGroup >
                 <Button variant="outline-secondary"><Link to="/" className="linkNotFound1">Voltar</Link></Button>
                 <Button variant="outline-success"><Link to="/login" className="linkNotFound2">Login</Link></Button>
                 <Button variant="outline-danger" onClick={handleShow}>Reportar</Button>
