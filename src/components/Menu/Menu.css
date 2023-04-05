@@ -7,10 +7,19 @@
   cursor: pointer;
   color: rgb(255, 255, 255);
   font-size: 20px;
+  border: 1px solid #5BCBFA !important;
+
+}
+
+.menu-btn:hover {
+  border: 1px solid #5BCBFA !important;
+  
+
 }
 
 .menu-btn:focus {
   outline: none;
+  
 }
 
 .menu-btn .icon {
@@ -61,4 +70,7 @@
 
 .bi-box-arrow-right:hover::before {
   color: #5ecfff;
+}
+.iconHover:hover {
+background-color: #5ecfff7e;
 }

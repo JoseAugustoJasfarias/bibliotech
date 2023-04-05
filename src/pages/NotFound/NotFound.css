@@ -1,0 +1,19 @@
+.pagenotFound{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.notFound {
+    width: 300px;
+    height: 300px;
+}
+
+.linkNotFound1{
+    text-decoration: none;
+    color: #6c757d
+}
+.linkNotFound2{
+    text-decoration: none;
+    color: #198754;
+}

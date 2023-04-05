@@ -17,15 +17,20 @@ import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Ajuda } from "./pages/Ajuda/Ajuda"
 import { ThemeContext } from "./contexts/ThemeContext";
 import { Postagem } from "./pages/Postagem/Postagem"
+import { Container, Spinner } from 'react-bootstrap';
+import imgLivro from './assets/icons/livros.png';
+import Quizz from './pages/Quizz/Quizz';
+import { NotFound } from './pages/NotFound/NotFound';
+import { ResetPassword } from './components/EsqueciMinhaSenha/EsqueciMinhaSenha';
+
 
 export function App() {
-
   const [temaEscuro, setTemaEscuro] = useState(false);
 
   //alterna entre true e false toda vez que for chamada;
   function alternar() {
     if (temaEscuro === true) {
-      setTemaEscuro(false)
+      setTemaEscuro(false);
     } else {
       setTemaEscuro(true);
     }
@@ -35,27 +40,30 @@ export function App() {
   const [carregando, setCarregando] = useState(true); // novo estado de carregamento
 
   useEffect(() => {
-    // Monitorar/detectar o usuário conectado
-    // Fica sabendo quando loga/desloga
-    onAuthStateChanged(auth, (user) => {
-      // user é nulo = deslogado
-      // user tem objeto = logado
+    onAuthStateChanged(auth, user => {
       setUsuarioLogado(user);
-      setCarregando(false); // atualizar estado de carregamento
+      setCarregando(false);
     });
-
-    // Esse efeito irá rodar apenas uma vez
-    // Quando o App for renderizado/inicializado
   }, []);
 
-  // Renderizar rotas apenas quando o aplicativo estiver pronto
   if (carregando) {
-    return <div>Carregando...</div>;
+    return (
+      <>
+        <Container className=" d-flex flex-column  justify-content-center align-items-center mt-5">
+          <img src={imgLivro} alt="Imagem da logo Livro" />
+          <h4>Aguarde um momento por favor </h4>
+          <h5 className="ms-1">Carregando...</h5>
+          <Spinner variant="success"></Spinner>
+        </Container>
+      </>
+    );
   }
 
   return (
     <>
-      <ThemeContext.Provider value={{ temaEscuro: temaEscuro, alternar: alternar }}>
+      <ThemeContext.Provider
+        value={{ temaEscuro: temaEscuro, alternar: alternar }}
+      >
         <AuthContext.Provider value={usuarioLogado}>
           <BrowserRouter>
             <Routes>
@@ -67,11 +75,20 @@ export function App() {
                 <Route path="/livros/adicionar" element={<AdicionarLivro />} />
                 <Route path="/livros/editar/:id" element={<EditarLivro />} />
                 <Route path="/emprestimos" element={<Emprestimos />} />
-                <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
-                <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+                <Route
+                  path="/emprestimos/adicionar"
+                  element={<AdicionarEmprestimo />}
+                />
+                <Route
+                  path="/emprestimos/editar/:id"
+                  element={<EditarEmprestimo />}
+                />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/esqueci-minha-senha" element={<ResetPassword />} />
+              <Route path="/quizz" element={<Quizz />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </AuthContext.Provider>
