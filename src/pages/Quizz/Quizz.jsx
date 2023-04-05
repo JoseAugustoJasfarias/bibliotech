@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import "./Quizz.css"
 import { Link } from "react-router-dom";
+import quizzImg from '../../assets/video/BIBLIOTECH.gif';
 
 export const Quizz = () => {
     const [score, setScore] = useState(0);
@@ -76,16 +77,17 @@ export const Quizz = () => {
     };
 
     return (
-        <Card className="card bg-success text-center" >
+        <Card className="text-center" id="quizz">
             <div className="quiz">
                 {showScore ? (
                     <div className="score-section">
-                        <p>Você acertou {score} de {questions.length} perguntas!</p>
+                        <img src={quizzImg} width="256" alt="Logo" />
+                        <p className="mt-2">Você acertou {score} de {questions.length} perguntas!</p>
                         <br />
-                        <Button variant="dark" className="mb-1" onClick={handleResetButtonClick}>Reiniciar</Button>
+                        <Button variant="outline-light" className="mb-1" onClick={handleResetButtonClick}>Reiniciar</Button>
                         <br/>
                         <Link to="/login">
-                            <Button className="mt-2" variant="dark">
+                            <Button className="mt-2" variant="outline-light">
                                 Login
                             </Button>
                         </Link>
@@ -102,7 +104,7 @@ export const Quizz = () => {
                         </div>
                         <div className="answer-section mt-3">
                             {questions[currentQuestion].answerOptions.map((answerOption) => (
-                                <Button className="me-2 ms-2 mt-2 mb-2" variant="dark outline-light" onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</Button>
+                                <Button className="me-2 ms-2 mt-2 mb-2" variant="outline-light" onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</Button>
                             ))}
                         </div>
                     </>

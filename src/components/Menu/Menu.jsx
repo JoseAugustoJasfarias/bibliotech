@@ -1,6 +1,6 @@
 import './Menu.css';
 import { Container, Nav, Navbar, } from 'react-bootstrap';
-import logoIcon from './../../assets/icons/livros.png';
+import BIBLIOTECH from "./../../assets/images/BIBLIOTECH-navbar.png";
 import { Link, useNavigate, } from 'react-router-dom';
 import { logout } from '../../firebase/auth';
 import React, { useEffect, useState, useContext, } from 'react';
@@ -16,7 +16,7 @@ export function Menu() {
 
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
-  const alternar = resultado.alternar;  
+  const alternar = resultado.alternar;
 
   const navigate = useNavigate();
   const [isMouseOverIcon, setIsMouseOverIcon] = useState(false);
@@ -33,8 +33,6 @@ export function Menu() {
     iconeBtn = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
   }
 
- 
-
 
   useEffect(() => {
     setUserDisplayName(usuarioLogado.displayName)
@@ -49,22 +47,22 @@ export function Menu() {
 
   return (
     <Navbar
-      bg={temaEscuro ? "dark" : "success"}
-      variant={temaEscuro ? "dark, 0.5" : "ligth"}
+      className={temaEscuro ? "bg-dark" : "fundoMenu"}
+      variant={temaEscuro ? "dark" : "ligth"}
       expand="sm"
     >
       <Container fluid>
         <Navbar.Brand>
           {
             <Link to="/">
-              <img src={logoIcon} width="32" alt="Logo" />
+              <img src={BIBLIOTECH} width="60" alt="Logo" />
             </Link>
           }
         </Navbar.Brand>
 
 
         <Button
-          variant="dark"
+          variant="outline-light"
           className="d-lg-none menu-btn"
           onClick={handleShow}
         >
@@ -80,14 +78,14 @@ export function Menu() {
           show={show}
           onHide={handleClose}
           responsive="lg"
-          style={{ backgroundColor: '#00000035' }}
+          style={{ backgroundColor: '#faf9f9c2' }}
         >
           <Offcanvas.Header
             closeButton
             closeVariant="white"
             style={{ color: 'white' }}
           >
-            <Offcanvas.Title style={{ marginRight: '200px' }}>
+            <Offcanvas.Title style={{ marginRight: '200px' }} id="titleoffcanvas">
               Menu
             </Offcanvas.Title>
           </Offcanvas.Header>
@@ -104,10 +102,6 @@ export function Menu() {
                 Emprestimos
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/usuario" className="navText">
-                {userDisplayName ? userDisplayName : usuarioLogado.email.split("@")[0]}
-              </Nav.Link>
-              
               <Nav.Link as={Link} to="/Ajuda" className="navText">
                 Ajuda
               </Nav.Link>
@@ -115,7 +109,11 @@ export function Menu() {
               <Nav.Link as={Link} to="/Postagem" className="navText">
                 Postagem
               </Nav.Link>
-              
+
+              <Nav.Link as={Link} to="/usuario" className="navText">
+                {userDisplayName ? userDisplayName : usuarioLogado.email.split("@")[0]}
+              </Nav.Link>
+
               <Nav.Link
                 onClick={onLogout}
                 className="navText"
@@ -124,14 +122,12 @@ export function Menu() {
               >
                 <i
                   className="bi bi-box-arrow-right"
-                  style={{ color: isMouseOverIcon ? '#5ecfff' : 'white' }} // Verifica se o mouse está sobre o ícone e altera a cor de acordo
+                  style={{ color: isMouseOverIcon ? 'black' : 'black' }} // Verifica se o mouse está sobre o ícone e altera a cor de acordo
                 ></i>
               </Nav.Link>
 
-
-              <Nav.Link  as={Link} variant="outline-light" onClick={alternar} className="navText iconHover ms-2"  >
+              <Nav.Link as={Link} variant="outline-light" onClick={alternar} className="navText iconHover ms-2"  >
                 <img src={iconeBtn} alt="tema claro ou escuro" width="16" className='navText' />
-
               </Nav.Link>
 
             </Nav>

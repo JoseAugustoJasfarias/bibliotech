@@ -22,7 +22,7 @@ export function Breadcrumb() {
                     return (
                         <li key={segment}>
                             <Link to={link}>{segment}</Link>
-                            {!isLastSegment && <span> {'>'} </span>}
+                            {!isLastSegment && <span className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }> {'>'} </span>}
                         </li>
                     );
                 })}

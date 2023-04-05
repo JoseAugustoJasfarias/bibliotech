@@ -6,6 +6,7 @@ import { addLivro, uploadCapaLivro } from "../../firebase/livros";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { Breadcrumb } from "../../components/Breadcrumb/Breadcrumb";
+import "./AdicionarLivro.css"
 
 export function AdicionarLivro() {
 
@@ -39,7 +40,7 @@ export function AdicionarLivro() {
     }
 
     return (
-        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" } id="adicionarLivro">
         <div className="adicionar-livro">
             <Breadcrumb />
             <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>

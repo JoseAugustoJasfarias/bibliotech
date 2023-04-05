@@ -8,6 +8,7 @@ import { getLivro, getLivros } from '../../firebase/livros';
 import { isAfter } from 'date-fns';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+import "./AdicionarEmprestimo.css"
 
 export function AdicionarEmprestimo() {
 
@@ -55,7 +56,7 @@ export function AdicionarEmprestimo() {
   }, []);
 
   return (
-    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" } id="adicionarEmprestimo">
     <div className="adicionar-emprestimo">
       <Breadcrumb />
       <Container className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>

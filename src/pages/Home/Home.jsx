@@ -22,15 +22,14 @@ function TotalEmprestimos() {
 
   return (
     <div>
-      <h1>Total de empréstimos: {totalEmprestimos}</h1>
+      <h4 className="mt-2">Total de empréstimos: {totalEmprestimos}</h4>
     </div>
   );
 }
 
   return (
     <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" } >
-      <div className="home">
-        <h1>HOME</h1>
+      <div className="home" id="backg">
         <TotalEmprestimos />
       </div>
     </div>

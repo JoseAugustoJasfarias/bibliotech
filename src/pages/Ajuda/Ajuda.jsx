@@ -12,9 +12,8 @@ export function Ajuda() {
     const temaEscuro = resultado.temaEscuro;
 
     return (
-        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+        <div className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" } id="ajuda">
             <Breadcrumb />
-
             <div>
                 <h1>Duvidas mais frequentes</h1>
                 <Accordion className='Accordion' defaultActiveKey={['0']} alwaysOpen>
@@ -32,11 +31,12 @@ export function Ajuda() {
                     </Accordion.Item>
                 </Accordion>
             </div>
-            <div id='carousel'>
-                <Carousel >
+            <div id='carousel' className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+                <Carousel className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark" }>
+                    
                     <Carousel.Item>
                         <img
-                            className="d-block w-100"
+                            className="w-100 h-100"
                             src="https://www.folhavitoria.com.br/geral/blogs/vem-ler-comigo/wp-content/uploads/2021/01/12313151875_04c83230a2_k-800x500.jpg"
                             alt="First slide"
                         />
@@ -49,15 +49,14 @@ export function Ajuda() {
                             </p>
                         </Carousel.Caption>
                     </Carousel.Item>
+
                     <Carousel.Item>
                         <img
-                            className="d-block w-100"
+                            className="w-100 h-100"
                             src="https://cdn.pensador.com/img/frase/ge/ni/genivaldo_pires_escolha_o_livro_certo_e_deixe_de_perder_trf_nl6ygvqm.jpg"
                             alt="Second slide"
                         />
-
                         <Carousel.Caption>
-
                             <h3>Como escolher um livro </h3>
                             <p>
                                 <a href="https://www.shoppingbalneario.com.br/como-escolher-o-livro-certo-para-ler/">
@@ -66,9 +65,10 @@ export function Ajuda() {
                             </p>
                         </Carousel.Caption>
                     </Carousel.Item>
+
                     <Carousel.Item>
                         <img
-                            className="d-block w-100"
+                            className="w-100 h-100"
                             src="https://blog.bighouseweb.com.br/wp-content/uploads/2022/01/Linguagens-de-programacao-1140x660.jpg"
                             alt="Third slide"
                         />

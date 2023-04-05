@@ -50,8 +50,8 @@ export function Emprestimos() {
   }
 
   return (
-    <div className={temaEscuro ? 'bg-dark text-light' : 'bg-light text-dark'}>
-      <div className="emprestimos">
+    <div className={temaEscuro ? 'bg-dark text-light' : 'bg-light text-dark'} id="emprestimos">
+      <div className={temaEscuro ? 'bg-dark text-light' : 'bg-light text-dark'} >
         <Breadcrumb />
         <Container
           className={temaEscuro ? 'bg-dark text-light' : 'bg-light text-dark'}

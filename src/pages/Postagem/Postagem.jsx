@@ -3,9 +3,7 @@ import { useForm } from "react-hook-form";
 import "./Postagem.css"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-// // 
-// import { ThemeContext } from "../../contexts/ThemeContext"
-// // 
+import { Button } from "react-bootstrap";
 
 const validationPostagem = yup.object().shape({
 
@@ -16,19 +14,6 @@ const validationPostagem = yup.object().shape({
 
 export function Postagem() {
 
-
-    //     const resultado = useContext(ThemeContext)
-
-    //     useEffect(() => {
-    //         initializeTable();
-    //     }, []);
-
-    //     function initializeTable() {
-    //         getLivros().then(resultados => {
-    //             setLivros(resultados)
-    //         })
-    //     }
-    // // 
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validationPostagem)
@@ -41,7 +26,7 @@ export function Postagem() {
     return (
         <div>
 
-            <main>
+            <main id="main-postagem">
                 <div className="card-post">
 
                     <h1>Criar postagem</h1>
@@ -50,24 +35,25 @@ export function Postagem() {
                         <form onSubmit={handleSubmit(onSubmit)}>
 
                             <div className="fields">
-                                <label>Nome</label>
-                                <input type="text" name="title" {...register("name")} />
+                                <label className="label-postagem">Nome</label>
+                                <input type="text" name="title" {...register("name")} id="input" />
                                 <p className="error-message">{errors.title?.message}</p>
                             </div>
 
                             <div className="fields">
-                                <label>Descrição</label>
-                                <input type="text" name="description" {...register("description")} />
+                                <label className="label-postagem">Descrição</label>
+                                <input type="text" name="description" {...register("description")} id="input"/>
                                 <p className="error-message">{errors.description?.message}</p>
                             </div>
 
                             <div className="fields">
-                                <label>Postagem</label>
-                                <textarea type="text" name="content" {...register("content")}></textarea>
+                                <label className="label-postagem">Postagem</label>
+                                <textarea id="textarea" type="text" name="content" {...register("content")}></textarea>
                                 <p className="error-message">{errors.content?.message}</p>
                             </div>
                             <div className="btn-post">
-                                <button type="submit">Enviar</button>
+                                <Button type="submit" variant="success">Enviar</Button>
+                                <Button type="reset" variant="danger" className="ms-2" >Limpar</Button>
 
                             </div>
 

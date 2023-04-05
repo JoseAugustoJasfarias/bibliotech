@@ -1,6 +1,6 @@
 import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { Link, Navigate } from 'react-router-dom';
-import logoIcon from '../../assets/icons/livros.png';
+import logoIcon from '../../assets/images/BIBLIOTECH-login.png';
 import googleIcon from '../../assets/icons/google-white.svg';
 import { useForm } from 'react-hook-form';
 import {
@@ -253,7 +253,7 @@ export function Cadastro() {
   }
 
   return (
-    <>
+    <div>
       <Container fluid className="my-5">
         <p className="text-center">
           <img src={logoIcon} width="256" alt="Logo do app" />
@@ -344,6 +344,6 @@ export function Cadastro() {
         </Form>
       </Container>
       <Footer />
-    </>
+    </div>
   );
 }

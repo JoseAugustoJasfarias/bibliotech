@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import googleIcon from '../../assets/icons/google-white.svg';
 import facebookIcon from '../../assets/icons/facebook.svg';
-import loginImg from '../../assets/images/login.png';
+import loginImg from '../../assets/images/BIBLIOTECH-login.png';
 import { AuthContext } from '../../contexts/AuthContext';
 import {
   loginGoogle,
